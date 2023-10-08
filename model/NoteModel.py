@@ -4,12 +4,17 @@ from model.Note import Note
 from model.ModelInterface import ModelInterface
 from model.NoteCollection import NoteCollection
 
+"""
+Класс Модель заметок, имплементирущая Интерфейс Модель
+"""
 class NoteModel(ModelInterface):
     
+    # Инициализация модели
     def __init__(self, filename):
         self.filename = filename
         self.notes = self.load_notes()
-        
+    
+    # Загрузка заметок    
     def load_notes(self):
         try:
             if not (self.file_is_empty(self.filename)):
@@ -25,12 +30,14 @@ class NoteModel(ModelInterface):
                 return NoteCollection()
         except FileNotFoundError:
             self.notes = NoteCollection()
-            
+    
+    # Сохранение заметок        
     def save_notes(self):
         data = {'notes': [{'id': note.id, 'title': note.title, 'body': note.body, 'date': note.date } for note in self.notes]}
         with open(self.filename, 'w', encoding='utf-8') as file:
             json.dump(data, file,indent=4,ensure_ascii=False)
     
+    # Добавление заметки
     def add_note(self, note_info):
         # self.load_notes()
         if self.notes.__len__()==0:
@@ -45,7 +52,8 @@ class NoteModel(ModelInterface):
         )
         self.notes.add_note(new_note)
         self.save_notes()
-        
+    
+    # Проверка на то, пустой ли файл    
     def file_is_empty(self, filename):
         try:
             with open(filename, 'r', encoding='utf-8') as file:
@@ -53,6 +61,7 @@ class NoteModel(ModelInterface):
                 return not bool(content)
         except FileNotFoundError:
             return True
-        
+    
+    # Получение заметок    
     def get_notes(self):
         return self.notes

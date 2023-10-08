@@ -1,9 +1,12 @@
+# Класс NoteController - связующее звено между Model и View
 class NoteController:
     
+    # Инициализация контроллера
     def __init__(self,model,view):
         self.model = model
         self.view = view()
-        
+    
+    # Работа контроллера    
     def run(self):
         exitFromApp = False
         while(exitFromApp == False):

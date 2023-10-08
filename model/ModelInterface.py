@@ -1,5 +1,9 @@
 from abc import ABC, abstractclassmethod
 
+"""
+Интерфейс модели
+"""
+
 class ModelInterface(ABC):
     
     # Инициализация модели

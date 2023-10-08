@@ -93,5 +93,4 @@ class NoteModel(ModelInterface):
                 return 1
             else:
                 return -1 # не удалось изменить заметку
-    
-    #
+            

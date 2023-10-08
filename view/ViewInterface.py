@@ -14,6 +14,10 @@ class ViewInterface(ABC):
     def input_command(self):
         pass
     
+    # Запрос информации для добавления заметки
+    def get_note_info(self):
+        pass
+    
     # Уведомление о добавлении заметки
     def notify_added_note(self):
         pass

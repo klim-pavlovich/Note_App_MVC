@@ -9,11 +9,11 @@ class ConsoleView(ViewInterface):
         print("0. Выйти из приложения")
         
     def input_command(self):
-        return input("Выберите команду:")
+        return input("Выберите команду: ")
     
     def get_note_info(self):
-        title = input("Введите заголовок заметки:")
-        body = input("Введите текст заметки:")
+        title = input("Введите заголовок заметки: ")
+        body = input("Введите текст заметки: ")
         return {"title":title,"body":body}
     
     def notify_saved_note(self):

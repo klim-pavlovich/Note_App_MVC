@@ -6,7 +6,7 @@ class ViewInterface(ABC):
     def display_menu(self):
         pass
     
-    # Отображение заметок
+    # Отображение всех заметок
     def display_notes(self):
         pass
     

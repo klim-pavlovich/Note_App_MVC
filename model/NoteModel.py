@@ -53,3 +53,6 @@ class NoteModel(ModelInterface):
                 return not bool(content)
         except FileNotFoundError:
             return True
+        
+    def get_notes(self):
+        return self.notes

@@ -21,3 +21,8 @@ class ModelInterface(ABC):
     @abstractclassmethod
     def add_note(self):
         pass
+    
+    # Получение всех заметок
+    @abstractclassmethod
+    def get_notes(self):
+        pass

@@ -4,7 +4,7 @@ class ConsoleView(ViewInterface):
     
     def display_menu(self):
         print("Меню:")
-        print("1. Просмотреть заметки")
+        print("1. Просмотреть все заметки")
         print("2. Создать заметку")
         print("0. Выйти из приложения")
         
@@ -12,13 +12,21 @@ class ConsoleView(ViewInterface):
         return input("Выберите команду: ")
     
     def get_note_info(self):
-        title = input("Введите заголовок заметки: ")
+        title = input("\nВведите заголовок заметки: ")
         body = input("Введите текст заметки: ")
         return {"title":title,"body":body}
     
     def notify_saved_note(self):
         print("Заметка успешно добавлена")
         
-    # еще нереализовано
-    def display_notes(self):
-        pass
+    # Отображение всех заметок
+    def display_notes(self, notes):
+        if not notes:
+            print("У вас пока нет заметок.")
+        else:
+            print("\nВаши заметки: ")
+            for note in notes:
+                print(f"Id: {note.id}")
+                print(f"Заголовок: {note.title}")
+                print(f"Тело: {note.body}")
+                print(f"Дата: {note.date}\n")

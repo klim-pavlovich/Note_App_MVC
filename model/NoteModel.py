@@ -65,3 +65,33 @@ class NoteModel(ModelInterface):
     # Получение заметок    
     def get_notes(self):
         return self.notes
+    
+    # Проверка на существование заметки по id
+    def is_existed_id(self,id):
+        for note in self.notes:
+            if (note.id == id):
+                return int(id)
+            else:
+                return -1 # заметки с таким id не существует
+    
+    # Получение заметки по id       
+    def get_note(self,id):
+        for note in self.notes:
+            if (note.id == id):
+                return note
+            else:
+                return -1 # заметки с таким id не существует
+    
+            
+    # Изменение заметки по id
+    def change_note(self, old_note, new_note_info):
+        for note in self.notes:
+            if (note.id == old_note.id):
+                note.title = new_note_info["title"]
+                note.body = new_note_info["body"]
+                self.save_notes()
+                return 1
+            else:
+                return -1 # не удалось изменить заметку
+    
+    #

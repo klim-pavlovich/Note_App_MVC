@@ -7,6 +7,7 @@ class ConsoleView(ViewInterface):
         print("Меню:")
         print("1. Просмотреть все заметки")
         print("2. Создать заметку")
+        print("3. Изменить заметку по id")
         print("0. Выйти из приложения")
     
     # Получение выбора команды от пользователя
@@ -21,7 +22,14 @@ class ConsoleView(ViewInterface):
     
     # Уведомление об успешном добавлении заметки
     def notify_saved_note(self):
-        print("Заметка успешно добавлена")
+        print("Заметка успешно добавлена.\n")
+        
+    # Уведомление об успешном изменении заметки
+    def notify_changed_note(self, result_of_changing):
+        if result_of_changing == 1:
+            print("Заметка успешно изменена.\n")
+        else:
+            print("Не удалось изменить заметку.\n")
         
     # Отображение всех заметок
     def display_notes(self, notes):
@@ -34,3 +42,19 @@ class ConsoleView(ViewInterface):
                 print(f"Заголовок: {note.title}")
                 print(f"Тело: {note.body}")
                 print(f"Дата: {note.date}\n")
+                
+    # Отображение одной заметки
+    def display_note(self,note):
+        print(f"Заголовок: {note.title}")
+        print(f"Тело: {note.body}")
+        print(f"Дата: {note.date}\n")
+        
+    # Изменение заметки по Id
+    def get_note_id(self):
+        id = input("Введите Id заметки, которую хотите изменить: ")
+        return int(id)
+        
+    # Обработка неверно введенного Id
+    def error_id_process(self):
+        print("Заметки с таким Id не существует.\n")
+        

@@ -30,3 +30,8 @@ class ModelInterface(ABC):
     @abstractclassmethod
     def get_notes(self):
         pass
+    
+    # Изменение заметки по id
+    @abstractclassmethod
+    def change_note(self, new_note_info):
+        pass

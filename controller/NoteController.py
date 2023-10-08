@@ -15,6 +15,19 @@ class NoteController:
             self.view.display_menu()
             choice = self.view.input_command()
             
+            if choice == '3':
+                asked_id = self.view.get_note_id()
+                answer_for_asked_id = self.model.is_existed_id(asked_id)
+                if (answer_for_asked_id >= 1):
+                    old_note = self.model.get_note(asked_id)
+                    self.view.display_note(old_note)
+                    new_note_info = self.view.get_note_info()
+                    result_of_changing = self.model.change_note(old_note,new_note_info)
+                    self.view.notify_changed_note(result_of_changing)
+                else:
+                    self.view.error_id_process()
+                
+            
             if choice == '2':
                 note_info = self.view.get_note_info()
                 self.model.add_note(note_info)

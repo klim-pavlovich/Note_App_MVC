@@ -1,4 +1,6 @@
-# Класс NoteController - связующее звено между Model и View
+"""
+Класс NoteController - связующее звено между Model и View
+"""
 class NoteController:
     
     # Инициализация контроллера

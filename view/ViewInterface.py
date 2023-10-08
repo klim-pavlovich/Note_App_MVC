@@ -1,5 +1,8 @@
 from abc import ABC, abstractclassmethod
 
+""""
+Интерфейс View
+"""
 class ViewInterface(ABC):
     
     # Отображение меню

@@ -61,11 +61,6 @@ class ModelInterface(ABC):
     def get_note(self,id):
         pass
     
-    # Изменение заметки по id
-    @abstractclassmethod       
-    def change_note(self, old_note, new_note_info):
-        pass
-    
     # Удаление заметки по id
     @abstractclassmethod
     def delete_note(self,id):

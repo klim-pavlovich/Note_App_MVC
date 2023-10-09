@@ -60,7 +60,6 @@ class ViewInterface(ABC):
     def notify_changed_body_note(self, result_of_changing):
         pass
     
-    
     # Отображение одной заметки
     @abstractclassmethod
     def display_note(self,note):

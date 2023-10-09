@@ -39,7 +39,6 @@ class NoteModel(ModelInterface):
     
     # Добавление заметки
     def add_note(self, note_info):
-        # self.load_notes()
         if self.notes.__len__()==0:
             max_id = 0
         else:

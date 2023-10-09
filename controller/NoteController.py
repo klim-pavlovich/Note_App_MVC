@@ -15,6 +15,7 @@ class NoteController:
             self.view.display_menu()
             choice = self.view.input_command()
             
+            # Удаление заметки
             if choice == '4':
                 asked_id = self.view.get_note_id_for_deleting()
                 try:
@@ -28,10 +29,12 @@ class NoteController:
                             self.view.error_id_process()
                 except ValueError:
                     self.view.incorrect_input_type_id_process() 
-                    
-            
+
+            # Изменение заметки
             elif choice == '3':
                 type_of_changing = self.view.get_type_info_to_change()
+                
+                # Изменение только заголовка заметки
                 if type_of_changing == '1':
                     asked_id = self.view.get_note_id_for_changing()
                     try:
@@ -48,7 +51,8 @@ class NoteController:
                                 self.view.error_id_process() # если в базе нет заметки с введенным id
                     except ValueError:
                         self.view.incorrect_input_type_id_process() # если пользователь ввел не int
-                    
+                
+                # Изменение только тела заметки  
                 elif type_of_changing == '2':
                     asked_id = self.view.get_note_id_for_changing()
                     try:
@@ -66,6 +70,7 @@ class NoteController:
                     except ValueError:
                         self.view.incorrect_input_type_id_process() # если пользователь ввел не int
                 
+                # Изменение и заголовка и тела заметки
                 elif type_of_changing == '3':
                     asked_id = self.view.get_note_id_for_changing()
                     try:
@@ -84,18 +89,22 @@ class NoteController:
                         self.view.incorrect_input_type_id_process() # если пользователь ввел не int
                 else:
                     self.view.incorrect_menu_input_processing()
-                    
+            
+            # Создание заметки        
             elif choice == '2':
                 note_info = self.view.get_note_info()
                 self.model.add_note(note_info)
                 self.view.notify_saved_note()
-                
+            
+            # Просмотр заметок  
             elif choice == '1':
                 all_notes = self.model.get_notes()
                 self.view.display_notes(all_notes)
-                
+            
+            # Выход из приложения    
             elif choice == '0':
                 exitFromApp = True
-                
+            
+            # Обработка неверного ввода    
             else:
                 self.view.incorrect_menu_input_processing()

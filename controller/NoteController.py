@@ -17,12 +17,18 @@ class NoteController:
             
             if choice == '4':
                 asked_id = self.view.get_note_id_for_deleting()
-                answer_for_asked_id = self.model.is_existed_id(asked_id)
-                if (answer_for_asked_id >= 1):
-                    result_of_deleting = self.model.delete_note(asked_id)
-                    self.view.delete_note(result_of_deleting)
-                else:
-                    self.view.error_id_process()
+                try:
+                    is_int_asked_id = int(asked_id)
+                    if is_int_asked_id:
+                        answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
+                        if (answer_for_asked_id >= 1):
+                            result_of_deleting = self.model.delete_note(asked_id)
+                            self.view.delete_note(result_of_deleting)
+                        else:
+                            self.view.error_id_process()
+                except ValueError:
+                    self.view.incorrect_input_type_id_process() 
+                    
             
             elif choice == '3':
                 asked_id = self.view.get_note_id_for_changing()

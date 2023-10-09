@@ -58,7 +58,7 @@ class ConsoleView(ViewInterface):
     # Получение id заметки для удаления
     def get_note_id_for_deleting(self):
         id = input("\nВведите Id заметки, которую хотите удалить: ")
-        return int(id)
+        return id
     
     # Обработка неверно введенного Id
     def error_id_process(self):

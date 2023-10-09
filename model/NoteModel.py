@@ -71,8 +71,7 @@ class NoteModel(ModelInterface):
         for note in self.notes:
             if (note.id == id):
                 return int(id)
-            else:
-                return -1 # заметки с таким id не существует
+        return -1 # заметки с таким id не существует
     
     # Получение заметки по id       
     def get_note(self,id):
@@ -81,7 +80,6 @@ class NoteModel(ModelInterface):
                 return note
             else:
                 return -1 # заметки с таким id не существует
-    
             
     # Изменение заметки по id
     def change_note(self, old_note, new_note_info):
@@ -93,4 +91,20 @@ class NoteModel(ModelInterface):
                 return 1
             else:
                 return -1 # не удалось изменить заметку
-            
+     
+    # Удаление заметки по id
+    def delete_note(self,id):
+        for note in self.notes:
+            if note.id == id:
+                result = self.notes.delete_note(id)
+                self.save_notes()
+        if result == 1:
+            return 1
+        else:
+            return -1 # не удалось удалить заметку)
+        # result = self.notes.delete_note(int(id))    
+        # if result == 1:
+        #     self.save_notes()
+        #     return 1
+        # else:
+        #     return -1

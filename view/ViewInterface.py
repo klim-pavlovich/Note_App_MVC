@@ -24,11 +24,6 @@ class ViewInterface(ABC):
     @abstractclassmethod
     def get_note_info(self):
         pass
-    
-    # Уведомление о добавлении заметки
-    @abstractclassmethod
-    def notify_added_note(self):
-        pass
       
     # Уведомление об успешном добавлении заметки
     @abstractclassmethod
@@ -47,7 +42,7 @@ class ViewInterface(ABC):
         
     # Изменение заметки по Id
     @abstractclassmethod
-    def get_note_id(self):
+    def get_note_id_for_changing(self):
         pass
         
     # Обработка неверно введенного Id

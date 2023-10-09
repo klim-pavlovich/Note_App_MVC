@@ -41,8 +41,8 @@ class ModelInterface(ABC):
     def file_is_empty(self, filename):
         pass
     
-    @abstractclassmethod
     # Проверка на существование заметки по id
+    @abstractclassmethod
     def is_existed_id(self,id):
         pass
     
@@ -51,7 +51,14 @@ class ModelInterface(ABC):
     def get_note(self,id):
         pass
     
-    @abstractclassmethod        
     # Изменение заметки по id
+    @abstractclassmethod       
     def change_note(self, old_note, new_note_info):
         pass
+    
+    # Удаление заметки по id
+    @abstractclassmethod
+    def delete_note(self,id):
+        pass
+    
+    

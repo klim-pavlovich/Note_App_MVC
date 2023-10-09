@@ -8,7 +8,8 @@ class ConsoleView(ViewInterface):
         print("1. Просмотреть все заметки")
         print("2. Создать заметку")
         print("3. Изменить заметку по id")
-        print("0. Выйти из приложения")
+        print("4. Удалить заметку по id")
+        print("0. Выйти из приложения\n")
     
     # Получение выбора команды от пользователя
     def input_command(self):
@@ -34,7 +35,7 @@ class ConsoleView(ViewInterface):
     # Отображение всех заметок
     def display_notes(self, notes):
         if not notes:
-            print("У вас пока нет заметок.")
+            print("У вас пока нет заметок.\n")
         else:
             print("\nВаши заметки: ")
             for note in notes:
@@ -49,12 +50,24 @@ class ConsoleView(ViewInterface):
         print(f"Тело: {note.body}")
         print(f"Дата: {note.date}\n")
         
-    # Изменение заметки по Id
-    def get_note_id(self):
+    # Получение id заметки для изменения
+    def get_note_id_for_changing(self):
         id = input("Введите Id заметки, которую хотите изменить: ")
         return int(id)
         
+    # Получение id заметки для удаления
+    def get_note_id_for_deleting(self):
+        id = input("Введите Id заметки, которую хотите удалить: ")
+        return int(id)
+    
     # Обработка неверно введенного Id
     def error_id_process(self):
         print("Заметки с таким Id не существует.\n")
+        
+    # Уведомление об удалении
+    def delete_note(self, result):
+        if result == 1:
+            print("Заметка успешно удалена.\n")
+        else:
+            print("Произошла ошибка при удалении.\n")
         

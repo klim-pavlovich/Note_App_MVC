@@ -16,7 +16,15 @@ class NoteCollection:
             self.notes.append(note)
         else:
             raise ValueError("Попытка добавить объект другого типа в коллекцию.")
-        
+
+    # Удаление заметки
+    def delete_note(self,id):
+        for note in self.notes:
+            if note.id == id:
+                self.notes.remove(note)
+                return 1 # заметка удалена
+        return -1 # не удалось удалить заметку
+            
     # Инициализация итератора для коллекции
     def __iter__(self):
         self.index = 0

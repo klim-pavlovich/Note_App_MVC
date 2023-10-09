@@ -78,8 +78,7 @@ class NoteModel(ModelInterface):
         for note in self.notes:
             if (note.id == id):
                 return note
-        else:
-            return -1 # заметки с таким id не существует
+        return -1 # заметки с таким id не существует
             
     # Изменение заметки по id
     def change_note(self, old_note, new_note_info):
@@ -89,16 +88,32 @@ class NoteModel(ModelInterface):
                 note.body = new_note_info["body"]
                 self.save_notes()
                 return 1
-            else:
-                return -1 # не удалось изменить заметку
+        return -1 # не удалось изменить заметку
+            
+    # Изменение заголовка заметки по id
+    def change_head_note(self, old_note, new_head_note_info):
+        for note in self.notes:
+            if (note.id == old_note.id):
+                note.title = new_head_note_info["title"]
+                self.save_notes()
+                return 1
+        return -1 # не удалось изменить заметку
+            
+    
+    # Изменение тела заметки по id
+    def change_body_note(self, old_note, new_body_note_info):
+        for note in self.notes:
+            if (note.id == old_note.id):
+                note.body = new_body_note_info["body"]
+                self.save_notes()
+                return 1
+        return -1 # не удалось изменить заметку
      
     # Удаление заметки по id
     def delete_note(self,id):
         for note in self.notes:
             if note.id == id:
-                result = self.notes.delete_note(id)
+                self.notes.delete_note(id)
                 self.save_notes()
-        if result == 1:
-            return 1
-        else:
-            return -1 # не удалось удалить заметку
+                return 1
+        return -1 # не удалось удалить заметку

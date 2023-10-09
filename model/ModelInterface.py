@@ -33,7 +33,17 @@ class ModelInterface(ABC):
     
     # Изменение заметки по id
     @abstractclassmethod
-    def change_note(self, new_note_info):
+    def change_note(self, old_note, new_note_info):
+        pass
+    
+    # Изменение заголовка заметки по id
+    @abstractclassmethod
+    def change_head_note(self, old_note, new_head_note_info):
+        pass
+    
+    # Изменение тела заметки по id
+    @abstractclassmethod
+    def change_body_note(self, old_note, new_body_note_info):
         pass
     
     # Проверка на то, пустой ли файл

@@ -31,23 +31,60 @@ class NoteController:
                     
             
             elif choice == '3':
-                asked_id = self.view.get_note_id_for_changing()
-                try:
-                    is_int_asked_id = int(asked_id)
-                    if is_int_asked_id:
-                        answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
-                        if (answer_for_asked_id >= 1):
-                            old_note = self.model.get_note(is_int_asked_id)
-                            self.view.display_note(old_note)
-                            new_note_info = self.view.get_note_info()
-                            result_of_changing = self.model.change_note(old_note,new_note_info)
-                            self.view.notify_changed_note(result_of_changing)
-                        else:
-                            self.view.error_id_process() # если в базе нет заметки с введенным id
-                except ValueError:
-                    self.view.incorrect_input_type_id_process() # если пользователь ввел не int
+                type_of_changing = self.view.get_type_info_to_change()
+                if type_of_changing == '1':
+                    asked_id = self.view.get_note_id_for_changing()
+                    try:
+                        is_int_asked_id = int(asked_id)
+                        if is_int_asked_id:
+                            answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
+                            if (answer_for_asked_id >= 1):
+                                old_note = self.model.get_note(is_int_asked_id)
+                                self.view.display_note(old_note)
+                                new_head_note_info = self.view.get_new_head_note_info()
+                                result_of_changing = self.model.change_head_note(old_note,new_head_note_info)
+                                self.view.notify_changed_head_note(result_of_changing)
+                            else:
+                                self.view.error_id_process() # если в базе нет заметки с введенным id
+                    except ValueError:
+                        self.view.incorrect_input_type_id_process() # если пользователь ввел не int
+                    
+                elif type_of_changing == '2':
+                    asked_id = self.view.get_note_id_for_changing()
+                    try:
+                        is_int_asked_id = int(asked_id)
+                        if is_int_asked_id:
+                            answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
+                            if (answer_for_asked_id >= 1):
+                                old_note = self.model.get_note(is_int_asked_id)
+                                self.view.display_note(old_note)
+                                new_body_note_info = self.view.get_new_body_note_info()
+                                result_of_changing = self.model.change_body_note(old_note,new_body_note_info)
+                                self.view.notify_changed_body_note(result_of_changing)
+                            else:
+                                self.view.error_id_process() # если в базе нет заметки с введенным id
+                    except ValueError:
+                        self.view.incorrect_input_type_id_process() # если пользователь ввел не int
                 
-            
+                elif type_of_changing == '3':
+                    asked_id = self.view.get_note_id_for_changing()
+                    try:
+                        is_int_asked_id = int(asked_id)
+                        if is_int_asked_id:
+                            answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
+                            if (answer_for_asked_id >= 1):
+                                old_note = self.model.get_note(is_int_asked_id)
+                                self.view.display_note(old_note)
+                                new_note_info = self.view.get_note_info()
+                                result_of_changing = self.model.change_note(old_note,new_note_info)
+                                self.view.notify_changed_note(result_of_changing)
+                            else:
+                                self.view.error_id_process() # если в базе нет заметки с введенным id
+                    except ValueError:
+                        self.view.incorrect_input_type_id_process() # если пользователь ввел не int
+                else:
+                    self.view.incorrect_menu_input_processing()
+                    
             elif choice == '2':
                 note_info = self.view.get_note_info()
                 self.model.add_note(note_info)

@@ -101,10 +101,4 @@ class NoteModel(ModelInterface):
         if result == 1:
             return 1
         else:
-            return -1 # не удалось удалить заметку)
-        # result = self.notes.delete_note(int(id))    
-        # if result == 1:
-        #     self.save_notes()
-        #     return 1
-        # else:
-        #     return -1
+            return -1 # не удалось удалить заметку

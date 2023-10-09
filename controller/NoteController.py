@@ -48,3 +48,6 @@ class NoteController:
                 
             if choice == '0':
                 exitFromApp = True
+                
+            else:
+                self.view.incorrect_menu_input_processing()

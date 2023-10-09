@@ -71,3 +71,6 @@ class ConsoleView(ViewInterface):
         else:
             print("Произошла ошибка при удалении.\n")
         
+    # Обработка неверно введеного пункта меню
+    def incorrect_menu_input_processing(self):
+        print("\nЯ не умею обрабатывать такие комманды. Введите пункт меню.\n")

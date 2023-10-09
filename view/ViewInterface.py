@@ -50,3 +50,7 @@ class ViewInterface(ABC):
     def error_id_process(self):
         pass
         
+    # Обработка неверно введеного пункта меню
+    @abstractclassmethod
+    def incorrect_menu_input_processing(self):
+        pass

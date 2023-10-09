@@ -52,25 +52,29 @@ class ConsoleView(ViewInterface):
         
     # Получение id заметки для изменения
     def get_note_id_for_changing(self):
-        id = input("Введите Id заметки, которую хотите изменить: ")
-        return int(id)
+        id = input("\nВведите Id заметки, которую хотите изменить: ")
+        return id
         
     # Получение id заметки для удаления
     def get_note_id_for_deleting(self):
-        id = input("Введите Id заметки, которую хотите удалить: ")
+        id = input("\nВведите Id заметки, которую хотите удалить: ")
         return int(id)
     
     # Обработка неверно введенного Id
     def error_id_process(self):
-        print("Заметки с таким Id не существует.\n")
+        print("\nЗаметки с таким Id не существует.\n")
         
     # Уведомление об удалении
     def delete_note(self, result):
         if result == 1:
-            print("Заметка успешно удалена.\n")
+            print("\nЗаметка успешно удалена.\n")
         else:
-            print("Произошла ошибка при удалении.\n")
+            print("\nПроизошла ошибка при удалении.\n")
         
     # Обработка неверно введеного пункта меню
     def incorrect_menu_input_processing(self):
         print("\nЯ не умею обрабатывать такие комманды. Введите пункт меню.\n")
+        
+    # Обработка неверно введеного типа данных для ввода id
+    def incorrect_input_type_id_process(self):
+        print("\nВведен неверный тип данных, 'id' заметки представляет собой целое число.\n")

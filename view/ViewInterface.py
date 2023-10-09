@@ -49,6 +49,11 @@ class ViewInterface(ABC):
     @abstractclassmethod
     def error_id_process(self):
         pass
+    
+    # Обработка неверно введеного типа данных для ввода id
+    @abstractclassmethod
+    def incorrect_input_type_id_process(self):
+        pass
         
     # Обработка неверно введеного пункта меню
     @abstractclassmethod

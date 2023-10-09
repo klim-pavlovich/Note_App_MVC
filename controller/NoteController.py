@@ -26,15 +26,20 @@ class NoteController:
             
             elif choice == '3':
                 asked_id = self.view.get_note_id_for_changing()
-                answer_for_asked_id = self.model.is_existed_id(asked_id)
-                if (answer_for_asked_id >= 1):
-                    old_note = self.model.get_note(asked_id)
-                    self.view.display_note(old_note)
-                    new_note_info = self.view.get_note_info()
-                    result_of_changing = self.model.change_note(old_note,new_note_info)
-                    self.view.notify_changed_note(result_of_changing)
-                else:
-                    self.view.error_id_process()
+                try:
+                    is_int_asked_id = int(asked_id)
+                    if is_int_asked_id:
+                        answer_for_asked_id = self.model.is_existed_id(is_int_asked_id)
+                        if (answer_for_asked_id >= 1):
+                            old_note = self.model.get_note(is_int_asked_id)
+                            self.view.display_note(old_note)
+                            new_note_info = self.view.get_note_info()
+                            result_of_changing = self.model.change_note(old_note,new_note_info)
+                            self.view.notify_changed_note(result_of_changing)
+                        else:
+                            self.view.error_id_process() # если в базе нет заметки с введенным id
+                except ValueError:
+                    self.view.incorrect_input_type_id_process() # если пользователь ввел не int
                 
             
             elif choice == '2':

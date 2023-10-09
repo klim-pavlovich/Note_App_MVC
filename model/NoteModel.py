@@ -78,8 +78,8 @@ class NoteModel(ModelInterface):
         for note in self.notes:
             if (note.id == id):
                 return note
-            else:
-                return -1 # заметки с таким id не существует
+        else:
+            return -1 # заметки с таким id не существует
             
     # Изменение заметки по id
     def change_note(self, old_note, new_note_info):
